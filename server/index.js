@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
 app.get('/courses', (req, res) => {
   Course.findAll()
   .then((course) => res.json(course))
-  .then(() => console.log('Games Recieved'))
+  .then(() => console.log('Course Recieved'))
   .catch(err => console.log(err))
 
 })
@@ -50,6 +50,61 @@ app.post('/courses', (req, res) => {
   .catch(err => console.log(err))
   .then(() => console.log('Course Created'))
 })
+
+app.get('/rounds', (req, res) => {
+  Round.findAll({
+    where: {
+      id: req.body.roundId
+    }
+  })
+  .then((round) => res.json(round))
+  .then(() => console.log('Round Recieved'))
+  .catch(err => console.log(err))
+})
+
+app.post('/rounds', (req, res) => {
+  Round.create({firstName: req.body.firstName,
+  lastName: req.body.lastName,
+  courseId: req.body.courseId
+})
+  .then((round) => res.json(round))
+  .then(() => console.log('Round Created'))
+  .catch(err => console.log(err))
+})
+
+app.put('/rounds', (req, res) => {
+
+  Round.update({
+    totalRoundScore: req.body.totalRoundScore,
+    hole1Score: req.body.hole1Score,
+    hole2Score: req.body.hole2Score,
+    hole3Score: req.body.hole3Score,
+    hole4Score: req.body.hole4Score,
+    hole5Score: req.body.hole5Score,
+    hole6Score: req.body.hole6Score,
+    hole7Score: req.body.hole7Score,
+    hole8Score: req.body.hole8Score,
+    hole9Score: req.body.hole9Score,
+    hole10Score: req.body.hole10Score,
+    hole11Score: req.body.hole11Score,
+    hole12Score: req.body.hole12Score,
+    hole13Score: req.body.hole13Score,
+    hole14Score: req.body.hole14Score,
+    hole15Score: req.body.hole15Score,
+    hole16Score: req.body.hole16Score,
+    hole17Score: req.body.hole17Score,
+    hole18Score: req.body.hole18Score
+  }, {
+    where: {
+      id: req.body.roundId
+    }
+  })
+  .then((round) => res.json(round))
+  .then(() => console.log('Round Updated'))
+  .catch(err => console.log(err))
+})
+
+
 app.listen(port, () => {
   console.log(`Connected! Listening on port: ${port}`)
 })

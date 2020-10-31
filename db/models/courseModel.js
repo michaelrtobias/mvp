@@ -98,6 +98,10 @@ const Course = db.define('courses', {
   }
 })
 
-Course.sync({ force: true})
+
+
+Course.sync()
 
 module.exports = Course;
+
+

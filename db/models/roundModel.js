@@ -1,7 +1,8 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const db = require('../index.js');
+const Course = require('./courseModel.js')
 
-const Round = db.define('Round', {
+const Round = db.define('rounds', {
   firstName: {
     type: DataTypes.STRING,
     allowNull: false
@@ -10,8 +11,8 @@ const Round = db.define('Round', {
     type: DataTypes.STRING,
     allowNull: false
   },
-    date: {
-    type: DataTypes.DATE,
+  courseId: {
+    type: DataTypes.INTEGER,
     allowNull: false
   },
   totalRoundScore: {
@@ -110,5 +111,9 @@ const Round = db.define('Round', {
     defaultValue: 0
   }
 })
+
+// Round.belongsTo(Course, { foreignKey: 'courseId'});
+
+Round.sync()
 
 module.exports = Round;
