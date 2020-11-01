@@ -52,11 +52,13 @@ app.post('/courses', (req, res) => {
 })
 
 app.get('/rounds', (req, res) => {
-  Round.findAll({
-    where: {
-      id: req.body.roundId
-    }
-  })
+  Round.findAll(
+  //   {
+  //   where: {
+  //     id: req.body.roundId
+  //   }
+  // }
+  )
   .then((round) => res.json(round))
   .then(() => console.log('Round Recieved'))
   .catch(err => console.log(err))

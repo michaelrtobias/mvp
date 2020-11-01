@@ -9,12 +9,6 @@ try {
 } catch (error) {
   throw err;
 }
-// sequelize.authenticate((err) => {
-//   if (err) {
-//     throw err
-//   } else {
-//     console.log('postgreSQL is connected!')
-//   }
-// })
+
 
 module.exports = sequelize;
