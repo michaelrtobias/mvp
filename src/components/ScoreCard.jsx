@@ -1,5 +1,5 @@
 import React from 'react';
-
+import ScoreBox from './ScoreBox.jsx'
 
 class ScoreCard extends React.Component {
   constructor(props) {
@@ -13,7 +13,9 @@ class ScoreCard extends React.Component {
 
   render() {
     return (
-      <div>scorecard rendered</div>
+      <div>
+      {props.currentScores.map((score) => <ScoreBox score={score}/>)}
+      </div>
     )
   }
 }

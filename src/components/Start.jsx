@@ -32,20 +32,26 @@ class Start extends React.Component {
     })
     .then(res => res.json())
     .catch(err => console.log(err))
+    .then((round) => {
+      this.props.getCurrentRoundId(round.id)
+    })
   }
 
   buttonClick() {
+      this.createRound()
       this.props.viewSwitcher('scorecard')
-      this.createRound.bind(this)
+
     }
   render() {
     return (
 
       <div>
+      <form>
       <input placeholder="First Name" type="text" name="firstName" onChange={this.onChange.bind(this)}></input>
       <input placeholder="Last Name" type="text" name="lastName" onChange={this.onChange.bind(this)}></input>
       <input placeholder="Course" type="number" name="courseId" onChange={this.onChange.bind(this)}></input>
       <button onClick={this.buttonClick.bind(this)}>Start Round</button>
+      </form>
       </div>
     )
   }

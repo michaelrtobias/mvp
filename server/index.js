@@ -7,7 +7,7 @@ const path = require('path');
 const Course = require('../db/models/courseModel.js');
 const Round = require('../db/models/roundModel.js');
 app.use(express.json());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, '../public')))
 
 
@@ -65,17 +65,18 @@ app.get('/rounds', (req, res) => {
 })
 
 app.post('/rounds', (req, res) => {
-  Round.create({firstName: req.body.firstName,
+  Round.create({
+  firstName: req.body.firstName,
   lastName: req.body.lastName,
   courseId: req.body.courseId
 })
   .then((round) => res.json(round))
   .then(() => console.log('Round Created'))
   .catch(err => console.log(err))
+
 })
 
 app.put('/rounds', (req, res) => {
-
   Round.update({
     totalRoundScore: req.body.totalRoundScore,
     hole1Score: req.body.hole1Score,
