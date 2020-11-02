@@ -1,0 +1,9 @@
+/* .score-box {
+  display: flex;
+} */
+.scores {
+  max-width: 100vw;
+}
+body {
+  background-color: green;
+}

@@ -51,13 +51,14 @@ app.post('/courses', (req, res) => {
   .then(() => console.log('Course Created'))
 })
 
-app.get('/rounds', (req, res) => {
+app.get(`/rounds`, (req, res) => {
+  const roundId = [req.query.id]
   Round.findAll(
-  //   {
-  //   where: {
-  //     id: req.body.roundId
-  //   }
-  // }
+    {
+    where: {
+      id: roundId
+    }
+  }
   )
   .then((round) => res.json(round))
   .then(() => console.log('Round Recieved'))

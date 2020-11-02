@@ -10,7 +10,7 @@ class ScoreBox extends React.Component {
 
   render() {
     return (
-      <input placeholder={this.props.score} type="number" name="holeScore"></input>
+      <input className="score-box"placeholder={this.props.score} type="number" name="holeScore"></input>
     )
   }
 }

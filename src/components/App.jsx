@@ -10,7 +10,7 @@ class App extends React.Component {
       currentScores : { },
       currentRound: {},
       view: "start",
-      roundId: ''
+      roundId: ""
     }
   }
 
@@ -21,11 +21,12 @@ class App extends React.Component {
   }
 
   getCurrentRound() {
-    fetch('/rounds')
+    var roundId = this.state.roundId
+    fetch(`/rounds?id=${roundId}`)
     .then(res => res.json())
     .then((round) => {
       this.setState({
-        currentRound: round[round.length - 1]
+        currentRound: round[0]
       })
     })
     .then(() => {this.getCurrentScores()})
@@ -62,7 +63,20 @@ class App extends React.Component {
     })
   }
 
+  // updateScores() {
+  //   fetch('/rounds', {
+  //     method: "PUT",
+  //     headers: {
+  //       'Accept': 'application/json',
+  //       'Content-Type': 'application/json'
+  //     } ,
+  //     body: {
 
+  //     }
+  //   })
+  //   .then(res => res.json())
+  //   .catch(err => console.log(err))
+  // }
 
   renderView() {
     const view = this.state.view;
@@ -70,14 +84,15 @@ class App extends React.Component {
       return <Start viewSwitcher={this.viewSwitcher.bind(this)}             getCurrentRound={this.getCurrentRound.bind(this)}
       getCurrentRoundId={this.getCurrentRoundId.bind(this)}/>
     } else if (view === 'scorecard') {
-      return <ScoreCard getCurrentRound={this.getCurrentRound.bind(this)} getCurrentScores={this.getCurrentScores.bind(this)}
-      currentScores={this.state.currentScores}/>
+      return this.state.roundId !== "" ?
+      <ScoreCard getCurrentRound={this.getCurrentRound.bind(this)} getCurrentScores={this.getCurrentScores.bind(this)}
+      currentScores={Object.values(this.state.currentScores)} currentRound={this.state.currentRound}/> : null
     }
   }
 
   render() {
     return(
-      <div>
+      <div className="main">
       <div className="switcher">
         {this.renderView()}
       </div>
