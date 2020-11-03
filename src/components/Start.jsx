@@ -37,21 +37,30 @@ class Start extends React.Component {
     })
   }
 
-  buttonClick() {
+  buttonClick(e) {
+    e.preventDefault();
       this.createRound()
       this.props.viewSwitcher('scorecard')
-
+      this.props.getCurrentCourseId(this.state.courseId)
     }
   render() {
     return (
-
       <div>
-      <form>
-      <input placeholder="First Name" type="text" name="firstName" onChange={this.onChange.bind(this)}></input>
-      <input placeholder="Last Name" type="text" name="lastName" onChange={this.onChange.bind(this)}></input>
-      <input placeholder="Course" type="number" name="courseId" onChange={this.onChange.bind(this)}></input>
-      <button onClick={this.buttonClick.bind(this)}>Start Round</button>
-      </form>
+        <div className="startTitle">
+          GUNGAGALUNGA
+        </div>
+          <div>
+            <input placeholder="First Name" type="text" name="firstName" onChange={this.onChange.bind(this)} required></input>
+            <input placeholder="Last Name" type="text" name="lastName" onChange={this.onChange.bind(this)} required></input>
+            <select placeholder="Course" type="number" name="courseId" onChange={this.onChange.bind(this)} required>
+            <option value="" disabled>Select a course</option>
+              <option value="1">TPC Scottsdale</option>
+              <option value="2">Torrey Pines</option>
+            </select>
+          </div>
+          <div >
+            <button className="startBTN" onClick={this.buttonClick.bind(this)}>Start Round</button>
+          </div>
       </div>
     )
   }

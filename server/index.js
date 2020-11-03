@@ -17,7 +17,14 @@ app.get('/', (req, res) => {
 })
 
 app.get('/courses', (req, res) => {
-  Course.findAll()
+  const courseId = [req.query.id]
+  Course.findAll(
+    {
+      where: {
+        id: courseId
+      }
+    }
+  )
   .then((course) => res.json(course))
   .then(() => console.log('Course Recieved'))
   .catch(err => console.log(err))
@@ -78,8 +85,8 @@ app.post('/rounds', (req, res) => {
 })
 
 app.put('/rounds', (req, res) => {
+  const roundId = [req.query.id]
   Round.update({
-    totalRoundScore: req.body.totalRoundScore,
     hole1Score: req.body.hole1Score,
     hole2Score: req.body.hole2Score,
     hole3Score: req.body.hole3Score,
@@ -100,7 +107,7 @@ app.put('/rounds', (req, res) => {
     hole18Score: req.body.hole18Score
   }, {
     where: {
-      id: req.body.roundId
+      id: roundId
     }
   })
   .then((round) => res.json(round))
