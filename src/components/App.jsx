@@ -1,6 +1,8 @@
 import React from 'react';
 import Start from './Start.jsx';
 import ScoreCard from './ScoreCard.jsx';
+import Finish from './Finish.jsx'
+import styled from 'styled-components'
 
 class App extends React.Component {
   constructor(props) {
@@ -99,7 +101,8 @@ class App extends React.Component {
         15: this.state.currentCourse.hole15Par,
         16: this.state.currentCourse.hole16Par,
         17: this.state.currentCourse.hole17Par,
-        18: this.state.currentCourse.hole18Par
+        18: this.state.currentCourse.hole18Par,
+        total: this.state.currentCourse.totalpar
       }
     })
   }
@@ -124,7 +127,13 @@ class App extends React.Component {
         roundId={this.state.roundId}
         getCourseData={this.getCourseData.bind(this)}
         currentPars={this.state.currentPars}
+        currentCourse={this.state.currentCourse}
+        viewSwitcher={this.viewSwitcher.bind(this)}
       /> : null
+    } else if (view === 'finish') {
+      return <Finish
+                currentScores={this.state.currentScores}
+                currentRound={this.state.currentRound}/>
     }
   }
 

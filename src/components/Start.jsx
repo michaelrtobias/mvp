@@ -7,7 +7,7 @@ class Start extends React.Component {
     this.state = {
       firstName: '',
       lastName: '',
-      courseId: 1
+      courseId: ""
     }
   }
 
@@ -47,15 +47,15 @@ class Start extends React.Component {
     return (
       <div>
         <div className="startTitle">
-          GUNGAGALUNGA
+          Pocket Looper
         </div>
           <div>
             <input placeholder="First Name" type="text" name="firstName" onChange={this.onChange.bind(this)} required></input>
             <input placeholder="Last Name" type="text" name="lastName" onChange={this.onChange.bind(this)} required></input>
             <select placeholder="Course" type="number" name="courseId" onChange={this.onChange.bind(this)} required>
-            <option value="" disabled>Select a course</option>
-              <option value="1">TPC Scottsdale</option>
-              <option value="2">Torrey Pines</option>
+            <option value="4" default value>Select a course</option>
+              <option value="4">TPC Scottsdale Stadium</option>
+              <option value="5">TPC Scottsdale Champions</option>
             </select>
           </div>
           <div >

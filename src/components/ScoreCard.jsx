@@ -71,6 +71,10 @@ class ScoreCard extends React.Component {
     })
   }
 
+  finishClick() {
+    this.props.viewSwitcher('finish')
+  }
+
   updateScores() {
     var roundId = this.props.roundId
     fetch(`/rounds?id=${roundId}`, {
@@ -113,14 +117,37 @@ class ScoreCard extends React.Component {
   render() {
     return (
 
-   <div>
-     <div className="nameBox">
-      <div>Golfer Name: {this.props.currentRound.firstName} {this.props.currentRound.lastName}</div>
+   <div className="scoreCard">
+
+    <div className="nameBox">{this.props.currentCourse.courseName}</div>
+    <div className="nameBox">{this.props.currentRound.firstName} {this.props.currentRound.lastName}</div>
+    <div className="parBoxes">
+    {/* <div className="holeNumber">Hole</div> */}
+      <div className="holeNumber">1</div>
+      <div className="holeNumber">2</div>
+      <div className="holeNumber">3</div>
+      <div className="holeNumber">4</div>
+      <div className="holeNumber">5</div>
+      <div className="holeNumber">6</div>
+      <div className="holeNumber">7</div>
+      <div className="holeNumber">8</div>
+      <div className="holeNumber">9</div>
+      <div className="holeNumber">10</div>
+      <div className="holeNumber">11</div>
+      <div className="holeNumber">12</div>
+      <div className="holeNumber">13</div>
+      <div className="holeNumber">14</div>
+      <div className="holeNumber">15</div>
+      <div className="holeNumber">16</div>
+      <div className="holeNumber">17</div>
+      <div className="holeNumber">18</div>
+      <div className="holeNumber">Total</div>
     </div>
     <div className="parBoxes">
       {Object.values(this.props.currentPars).map((par) => <Par par={par}/>)}
     </div>
-    <div>
+    <div className="scores">
+
       <input className="score-box"
              placeholder={this.props.currentScores[0]}
              onChange={this.scoreChange.bind(this)}
@@ -229,9 +256,12 @@ class ScoreCard extends React.Component {
              type="number"
              size="3"
              name="hole18"></input>
+             <div className="total">{this.props.currentScores.length > 0 ? this.props.currentScores.reduce((total, amount) => total + amount) : 0}</div>
     </div>
+
     <div>
-      <button onClick={this.buttonClick.bind(this)}>Update Scores</button>
+      <button onClick={this.buttonClick.bind(this)} >Update Scores</button>
+      <button onClick={this.finishClick.bind(this)}>Finish Round</button>
     </div>
   </div>
     )

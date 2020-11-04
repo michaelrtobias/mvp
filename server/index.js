@@ -34,6 +34,7 @@ app.get('/courses', (req, res) => {
 app.post('/courses', (req, res) => {
   Course.create({
     courseName: req.body.courseName,
+    totalPar: req.body.totalPar,
     hole1Par: req.body.hole1Par,
     hole2Par: req.body.hole2Par,
     hole3Par: req.body.hole3Par,
