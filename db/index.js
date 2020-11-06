@@ -7,8 +7,7 @@ const sequelize = new Sequelize({
   ssl: {
     rejectUnauthorized: false
   },
-  logging: false},
-  dialect: 'postgres'
+  logging: false}
   );
 try {
   sequelize.authenticate();
