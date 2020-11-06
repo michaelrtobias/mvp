@@ -8,8 +8,7 @@ const Course = db.define('courses', {
   },
   totalpar: {
     type: DataTypes.INTEGER,
-    allowNull: false,
-    defaultValue: 72
+    allowNull: false
   },
   hole1Par: {
     type: DataTypes.INTEGER,

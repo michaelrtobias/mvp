@@ -116,6 +116,10 @@ class ScoreCard extends React.Component {
 
   render() {
     return (
+      <div>
+        <div>
+        <h1>Pocket Looper</h1>
+      </div>
 
    <div className="scoreCard">
 
@@ -263,6 +267,7 @@ class ScoreCard extends React.Component {
       <button onClick={this.buttonClick.bind(this)} >Update Scores</button>
       <button onClick={this.finishClick.bind(this)}>Finish Round</button>
     </div>
+  </div>
   </div>
     )
   }

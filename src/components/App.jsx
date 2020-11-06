@@ -133,7 +133,8 @@ class App extends React.Component {
     } else if (view === 'finish') {
       return <Finish
                 currentScores={this.state.currentScores}
-                currentRound={this.state.currentRound}/>
+                currentRound={this.state.currentRound}
+                viewSwitcher={this.viewSwitcher.bind(this)}/>
     }
   }
 
