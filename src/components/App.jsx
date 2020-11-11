@@ -118,7 +118,8 @@ class App extends React.Component {
     if (view === 'start') {
       return <Start viewSwitcher={this.viewSwitcher.bind(this)}             getCurrentRound={this.getCurrentRound.bind(this)}
       getCurrentRoundId={this.getCurrentRoundId.bind(this)}
-      getCurrentCourseId={this.getCurrentCourseId.bind(this)}/>
+      getCurrentCourseId={this.getCurrentCourseId.bind(this)}
+      getCurrentScores={this.getCurrentScores.bind(this)}/>
     } else if (view === 'scorecard') {
       return this.state.roundId !== "" ?
       <ScoreCard
