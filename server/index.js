@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const Course = require('../db/models/courseModel.js');
 const Round = require('../db/models/roundModel.js');
+const dotenv = require('dotenv').config();
 app.use(express.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, '../public')))

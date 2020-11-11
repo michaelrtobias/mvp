@@ -143,7 +143,7 @@ class App extends React.Component {
       <div className="main">
       <div className="switcher">
         {this.renderView()}
-      </div>
+      </div>s
       </div>
     )
   }

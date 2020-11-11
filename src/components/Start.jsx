@@ -42,6 +42,7 @@ class Start extends React.Component {
       this.createRound()
       this.props.viewSwitcher('scorecard')
       this.props.getCurrentCourseId(this.state.courseId)
+      this.props.getCurrentScores()
     }
   render() {
     return (

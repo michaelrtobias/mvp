@@ -1,14 +1,10 @@
 const {Client} = require('pg');
 const {Sequelize} = require('sequelize')
-const conString = process.env.DATABASE_URL;
+// const conString = process.env.DATABASE_URL;
 
-const sequelize = new Sequelize({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false
-  },
-  logging: false}
-  );
+const conString = "postgres://postgres:postgres@localhost:5432/scorecard";
+
+const sequelize = new Sequelize(conString, {logging: false});
 try {
   sequelize.authenticate();
   console.log('postgreSQL is connected!');
