@@ -118,6 +118,6 @@ app.put('/rounds', (req, res) => {
 })
 
 
-app.listen(port, () => {
-  console.log(`Connected! Listening on port: ${port}`)
+app.listen(process.env.PORT, () => {
+  console.log(`Connected! Listening on port: ${process.env.PORT}`)
 })
